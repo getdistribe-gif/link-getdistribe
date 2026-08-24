@@ -1,150 +1,286 @@
 <!DOCTYPE html>
-<html lang="id">
-
+<html class="dark" lang="id">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>getDistribe | Link in Bio</title>
     <link rel="icon" href="icon.jpg">
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;700&family=Great+Vibes&display=swap"
-        rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container": "#1f1f1f",
+                "primary": "#f0ffed",
+                "tertiary-fixed-dim": "#fabc4e",
+                "inverse-primary": "#006d33",
+                "on-primary": "#003917",
+                "on-secondary-fixed-variant": "#8d004e",
+                "error": "#ffb4ab",
+                "surface-card": "rgba(17, 17, 17, 0.4)",
+                "surface-container-highest": "#353535",
+                "text-primary": "#FFFFFF",
+                "on-primary-container": "#007135",
+                "outline": "#849584",
+                "on-error-container": "#ffdad6",
+                "surface": "#131313",
+                "on-surface": "#e2e2e2",
+                "primary-container": "#00ff80",
+                "surface-dim": "#131313",
+                "tertiary": "#fff9f6",
+                "on-error": "#690005",
+                "tertiary-container": "#ffd89d",
+                "tertiary-fixed": "#ffdead",
+                "text-secondary": "#A1A1AA",
+                "on-secondary-container": "#58002f",
+                "on-tertiary-fixed-variant": "#604100",
+                "surface-bright": "#393939",
+                "secondary": "#ffb0ca",
+                "surface-container-high": "#2a2a2a",
+                "secondary-container": "#ff479c",
+                "on-primary-fixed": "#00210b",
+                "primary-fixed-dim": "#00e472",
+                "surface-container-lowest": "#0e0e0e",
+                "on-surface-variant": "#b9cbb8",
+                "surface-tint": "#00e472",
+                "on-secondary": "#640036",
+                "surface-overlay": "rgba(26, 26, 26, 0.8)",
+                "on-primary-fixed-variant": "#005225",
+                "on-tertiary-container": "#835a00",
+                "surface-variant": "#353535",
+                "inverse-surface": "#e2e2e2",
+                "inverse-on-surface": "#303030",
+                "surface-container-low": "#1b1b1b",
+                "background": "#131313",
+                "on-tertiary": "#432c00",
+                "on-tertiary-fixed": "#281900",
+                "secondary-fixed": "#ffd9e3",
+                "on-background": "#e2e2e2",
+                "outline-variant": "rgba(255,255,255,0.1)",
+                "error-container": "#93000a",
+                "secondary-fixed-dim": "#ffb0ca",
+                "on-secondary-fixed": "#3e001f",
+                "primary-fixed": "#63ff94"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px",
+                "2xl": "1.5rem",
+                "3xl": "2rem"
+            },
+            "spacing": {
+                "margin-mobile": "16px",
+                "base": "8px",
+                "gutter": "24px",
+                "stack-sm": "8px",
+                "stack-md": "16px",
+                "stack-lg": "32px",
+                "container-max": "1200px"
+            },
+            "fontFamily": {
+                "display-lg-mobile": ["Inter"],
+                "label-md": ["Inter"],
+                "headline-lg": ["Inter"],
+                "display-lg": ["Inter"],
+                "body-lg": ["Inter"],
+                "body-md": ["Inter"],
+                "accent-script": ["Great Vibes"],
+                "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                "display-lg-mobile": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                "accent-script": ["24px", { "lineHeight": "32px", "fontWeight": "400" }],
+                "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        .neon-glow:hover {
+            box-shadow: 0 0 20px rgba(255, 71, 156, 0.6);
+        }
+        .neon-text-glow {
+            text-shadow: 0 0 15px rgba(255, 71, 156, 0.8);
+        }
+        .glass-blob-1 {
+            background: radial-gradient(circle, rgba(255,71,156,0.15) 0%, rgba(19,19,19,0) 70%);
+        }
+        .glass-blob-2 {
+            background: radial-gradient(circle, rgba(0,255,128,0.1) 0%, rgba(19,19,19,0) 70%);
+        }
+        .glass-blob-3 {
+            background: radial-gradient(circle, rgba(99,102,241,0.1) 0%, rgba(19,19,19,0) 70%);
+        }
+    </style>
 </head>
-
-<body>
-    <!-- Background Effects -->
-    <div class="bg-dots top-right"></div>
-    <div class="bg-dots bottom-left"></div>
-    <div class="bg-glow top-center"></div>
-    <div class="bg-glow bottom-center"></div>
-
-    <div class="container">
-        <header class="profile">
-            <div class="logo-wrapper">
-                <img src="icon.jpg" alt="getDistribe Icon" class="top-icon">
-                <img src="logo.png" alt="getDistribe Logo" class="main-logo">
-            </div>
-            <p class="description">Your digital magazine for lifestyle,<br>trends, and inspiration.</p>
-        </header>
-
-        <!-- Links Section -->
-        <main class="links">
-            <hr style="width: 100%; border: 0; border-top: 1px solid rgba(255,255,255,0.2); margin: 10px 0;">
-
-            <!-- Promo Banner -->
-            <div style="position: relative; margin: 10px 0; border-radius: 12px; overflow: hidden; display: block;">
-                <img src="free_promotion.png" alt="Free Promotion - Submit Your Music"
-                    style="width: 100%; height: auto; display: block;">
-                <a href="https://www.getdistribe.com/p/submit-your-music.html" target="_blank" rel="noopener"
-                    style="position: absolute; bottom: 7%; left: 50%; transform: translateX(-50%); display: inline-block; background-color: #0A0A0A; color: #ffffff; text-decoration: none; padding: 10px 25px; font-size: 12px; font-weight: bold; border-radius: 5px; letter-spacing: 1px; border: 1px solid #FF1493; box-shadow: 0 4px 10px rgba(0,0,0,0.5); z-index: 2; white-space: nowrap;">
-                    SUBMIT NOW
-                </a>
-            </div>
-
-            <hr style="width: 100%; border: 0; border-top: 1px solid rgba(255,255,255,0.2); margin: 10px 0;">
-
-            <a href="https://getdistribe.com" class="link-btn" target="_blank" rel="noopener">
-                <div class="icon-wrapper"><i class="fa-solid fa-globe"></i></div>
-                <div class="text-wrapper">
-                    <span class="title">WEBSITE / EMAGAZINE</span>
-                    <span class="subtitle">Baca emagazine terbaru</span>
-                </div>
-                <div class="arrow-wrapper"><i class="fa-solid fa-chevron-right"></i></div>
-            </a>
-
-            <a href="https://www.instagram.com/getdistribe_music/" class="link-btn" target="_blank" rel="noopener">
-                <div class="icon-wrapper"><i class="fa-brands fa-instagram"></i></div>
-                <div class="text-wrapper">
-                    <span class="title">INSTAGRAM</span>
-                    <span class="subtitle">@getdistribe_music</span>
-                </div>
-                <div class="arrow-wrapper"><i class="fa-solid fa-chevron-right"></i></div>
-            </a>
-
-            <a href="https://www.tiktok.com/@getdistribe_" class="link-btn" target="_blank" rel="noopener">
-                <div class="icon-wrapper"><i class="fa-brands fa-tiktok"></i></div>
-                <div class="text-wrapper">
-                    <span class="title">TIKTOK</span>
-                    <span class="subtitle">@getdistribe_</span>
-                </div>
-                <div class="arrow-wrapper"><i class="fa-solid fa-chevron-right"></i></div>
-            </a>
-
-            <a href="https://www.youtube.com/@getdistribe_music" class="link-btn" target="_blank" rel="noopener">
-                <div class="icon-wrapper"><i class="fa-brands fa-youtube"></i></div>
-                <div class="text-wrapper">
-                    <span class="title">YOUTUBE</span>
-                    <span class="subtitle">getDistribe Official</span>
-                </div>
-                <div class="arrow-wrapper"><i class="fa-solid fa-chevron-right"></i></div>
-            </a>
-
-            <a href="https://web.facebook.com/profile.php?id=61570673833773" class="link-btn" target="_blank"
-                rel="noopener">
-                <div class="icon-wrapper"><i class="fa-brands fa-facebook-f"></i></div>
-                <div class="text-wrapper">
-                    <span class="title">FACEBOOK</span>
-                    <span class="subtitle">getDistribe</span>
-                </div>
-                <div class="arrow-wrapper"><i class="fa-solid fa-chevron-right"></i></div>
-            </a>
-
-            <a href="https://www.threads.net/@getdistribe_music" class="link-btn" target="_blank" rel="noopener">
-                <div class="icon-wrapper"><i class="fa-brands fa-threads"></i></div>
-                <div class="text-wrapper">
-                    <span class="title">THREADS</span>
-                    <span class="subtitle">@getdistribe_music</span>
-                </div>
-                <div class="arrow-wrapper"><i class="fa-solid fa-chevron-right"></i></div>
-            </a>
-
-            <a href="mailto:getdistribe@gmail.com" class="link-btn" target="_blank" rel="noopener">
-                <div class="icon-wrapper"><i class="fa-regular fa-envelope"></i></div>
-                <div class="text-wrapper">
-                    <span class="title">EMAIL</span>
-                    <span class="subtitle">getdistribe@gmail.com</span>
-                </div>
-                <div class="arrow-wrapper"><i class="fa-solid fa-chevron-right"></i></div>
-            </a>
-
-            <hr style="width: 100%; border: 0; border-top: 1px solid rgba(255,255,255,0.2); margin: 10px 0;">
-
-            <!-- Donation Link -->
-            <a href="https://saweria.co/getdistribe" class="link-btn" target="_blank" rel="noopener"
-                style="background: rgba(229, 169, 61, 0.1); border-color: #e5a93d;">
-                <div class="icon-wrapper" style="color: #e5a93d;"><i class="fa-solid fa-hand-holding-heart"></i></div>
-                <div class="text-wrapper">
-                    <span class="title" style="color: #e5a93d;">DUKUNG KAMI (SAWERIA)</span>
-                    <span class="subtitle" style="color: #d49524;">Traktir kami kopi & bantu platform ini terus
-                        berkembang! ☕🚀</span>
-                </div>
-                <div class="arrow-wrapper" style="color: #e5a93d;"><i class="fa-solid fa-chevron-right"></i></div>
-            </a>
-
-            <!-- Affiliate Link -->
-            <a href="affiliate.html" class="link-btn"
-                style="background: rgba(0, 255, 128, 0.1); border-color: #00ff80;">
-                <div class="icon-wrapper" style="color: #00ff80;"><i class="fa-solid fa-shopping-cart"></i></div>
-                <div class="text-wrapper">
-                    <span class="title" style="color: #00ff80;">PRODUK REKOMENDASI (AFFILIATE)</span>
-                    <span class="subtitle" style="color: #00cc66;">Cek produk affiliate saya di sini! 🛒</span>
-                </div>
-                <div class="arrow-wrapper" style="color: #00ff80;"><i class="fa-solid fa-chevron-right"></i></div>
-            </a>
-        </main>
-
-        <!-- Footer Section -->
-        <footer class="footer">
-            <p class="cursive-text">Stay inspired!</p>
-            <p class="thanks-text">THANK YOU FOR YOUR SUPPORT <i class="fa-regular fa-heart"></i></p>
-        </footer>
+<body class="bg-background text-text-primary font-body-md min-h-screen flex flex-col items-center pb-24 relative overflow-x-hidden antialiased">
+    <!-- Soft Glow Background Elements for Glassmorphism Depth -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div class="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full glass-blob-1 blur-[80px]"></div>
+        <div class="absolute bottom-[10%] right-[-20%] w-[50%] h-[50%] rounded-full glass-blob-2 blur-[100px]"></div>
+        <div class="absolute top-[40%] left-[20%] w-[40%] h-[40%] rounded-full glass-blob-3 blur-[90px]"></div>
     </div>
-</body>
 
+    <!-- Header / TopAppBar -->
+    <header class="w-full max-w-container-max mx-auto px-margin-mobile py-stack-lg flex flex-col relative z-10 pt-12 md:pt-20">
+        <div class="w-full flex items-center justify-between mb-12">
+            <img alt="getDistribe Logo" class="h-10 object-contain" src="logo.png">
+            <button onclick="if (navigator.share) { navigator.share({title: 'getDistribe', url: window.location.href}); }" class="text-text-secondary hover:text-secondary transition-colors" aria-label="Share">
+                <span class="material-symbols-outlined">share</span>
+            </button>
+        </div>
+        <div class="flex flex-col items-center">
+            <h1 class="text-[40px] font-bold text-center leading-tight mb-2">
+                <span class="text-white">FREE</span><br>
+                <span class="text-secondary-container neon-text-glow">PROMOTION</span>
+            </h1>
+            <p class="text-white text-lg font-semibold mb-4">submit your music, band, or event</p>
+            <p class="text-text-secondary text-center max-w-md mb-8">Your digital magazine for lifestyle, trends, and inspiration.</p>
+            <a href="https://www.getdistribe.com/p/submit-your-music.html" target="_blank" rel="noopener" class="w-full max-w-md bg-secondary-container text-on-secondary-container py-5 rounded-2xl text-headline-md font-bold transition-all neon-glow uppercase tracking-wider shadow-[0_0_15px_rgba(255,71,156,0.3)] hover:bg-secondary text-center block">
+                Submit Now
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content Canvas (Bento Box Grid) -->
+    <main class="w-full max-w-[800px] mx-auto px-margin-mobile grid grid-cols-2 md:grid-cols-4 gap-4 relative z-10 mt-4">
+        <!-- Media/Latest Drop (Span 2) -->
+        <a href="https://getdistribe.com" target="_blank" rel="noopener" class="col-span-2 md:col-span-2 glass-card rounded-3xl p-6 flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1 hover:bg-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.2)] h-48 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-[rgba(255,255,255,0.05)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="flex justify-between items-start relative z-10">
+                <div class="bg-[rgba(255,71,156,0.15)] text-secondary-container border border-[rgba(255,71,156,0.3)] w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-md shadow-[0_0_10px_rgba(255,71,156,0.2)]">
+                    <span class="material-symbols-outlined">library_music</span>
+                </div>
+                <span class="text-text-secondary text-sm font-medium">Latest Drop</span>
+            </div>
+            <div class="relative z-10">
+                <h3 class="text-headline-md font-headline-md text-text-primary group-hover:text-primary transition-colors">Listen Now</h3>
+                <p class="text-text-secondary text-sm mt-1 flex items-center gap-1">
+                    Stream on all platforms <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+                </p>
+            </div>
+        </a>
+
+        <!-- Social: Instagram -->
+        <a href="https://www.instagram.com/getdistribe/" target="_blank" rel="noopener" class="col-span-1 glass-card rounded-3xl p-5 flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:-translate-y-1 hover:bg-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.2)] h-48 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-[rgba(255,255,255,0.05)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="w-16 h-16 rounded-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] flex items-center justify-center group-hover:scale-110 group-hover:bg-[rgba(255,255,255,0.1)] transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.2)] relative z-10">
+                <img alt="Instagram" class="w-9 h-9 object-contain" src="instagram.png">
+            </div>
+            <span class="text-label-md font-label-md text-text-primary relative z-10">Instagram</span>
+        </a>
+
+        <!-- Social: TikTok -->
+        <a href="https://www.tiktok.com/@getdistribe_" target="_blank" rel="noopener" class="col-span-1 glass-card rounded-3xl p-5 flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:-translate-y-1 hover:bg-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.2)] h-48 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-[rgba(255,255,255,0.05)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="w-16 h-16 rounded-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] flex items-center justify-center group-hover:scale-110 group-hover:bg-[rgba(255,255,255,0.1)] transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.2)] relative z-10">
+                <img alt="TikTok" class="w-9 h-9 object-contain" src="tiktok.png">
+            </div>
+            <span class="text-label-md font-label-md text-text-primary relative z-10">TikTok</span>
+        </a>
+
+        <!-- Social: X (Twitter) -->
+        <a href="https://x.com/getdistribe" target="_blank" rel="noopener" class="col-span-1 glass-card rounded-3xl p-5 flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:-translate-y-1 hover:bg-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.2)] h-48 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-[rgba(255,255,255,0.05)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="w-16 h-16 rounded-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] flex items-center justify-center group-hover:scale-110 group-hover:bg-[rgba(255,255,255,0.1)] transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.2)] relative z-10">
+                <img alt="X (Twitter)" class="w-9 h-9 object-contain" src="x.png">
+            </div>
+            <span class="text-label-md font-label-md text-text-primary relative z-10">X (Twitter)</span>
+        </a>
+
+        <!-- Social: Facebook -->
+        <a href="https://web.facebook.com/profile.php?id=61570673833773" target="_blank" rel="noopener" class="col-span-1 glass-card rounded-3xl p-5 flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:-translate-y-1 hover:bg-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.2)] h-48 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-[rgba(255,255,255,0.05)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="w-16 h-16 rounded-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] flex items-center justify-center group-hover:scale-110 group-hover:bg-[rgba(255,255,255,0.1)] transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.2)] relative z-10">
+                <img alt="Facebook" class="w-9 h-9 object-contain" src="facebook.png">
+            </div>
+            <span class="text-label-md font-label-md text-text-primary relative z-10">Facebook</span>
+        </a>
+
+        <!-- Support / Saweria (Span 2) -->
+        <a href="https://saweria.co/getdistribe" target="_blank" rel="noopener" class="col-span-2 glass-card rounded-3xl p-6 flex flex-col justify-center items-start group transition-all duration-300 hover:-translate-y-1 hover:bg-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.2)] overflow-hidden relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-[rgba(255,255,255,0.05)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute right-[-20px] bottom-[-20px] opacity-10 group-hover:opacity-20 transition-opacity group-hover:scale-110 duration-500">
+                <span class="material-symbols-outlined text-[120px]">volunteer_activism</span>
+            </div>
+            <div class="bg-[rgba(255,176,202,0.15)] text-secondary border border-[rgba(255,176,202,0.3)] w-10 h-10 rounded-full flex items-center justify-center mb-4 relative z-10 backdrop-blur-md shadow-[0_0_10px_rgba(255,176,202,0.2)]">
+                <span class="material-symbols-outlined">favorite</span>
+            </div>
+            <h3 class="text-headline-md font-headline-md text-text-primary relative z-10">Dukung Kami (Saweria)</h3>
+            <p class="text-text-secondary text-sm mt-1 relative z-10">Traktir kami kopi & bantu platform ini terus berkembang! ☕🚀</p>
+        </a>
+
+        <!-- Social: YouTube -->
+        <a href="https://www.youtube.com/@getdistribe_music" target="_blank" rel="noopener" class="col-span-1 glass-card rounded-3xl p-5 flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:-translate-y-1 hover:bg-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.2)] h-48 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-[rgba(255,255,255,0.05)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="w-16 h-16 rounded-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] flex items-center justify-center group-hover:scale-110 group-hover:bg-[rgba(255,255,255,0.1)] transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.2)] relative z-10">
+                <img alt="YouTube" class="w-9 h-9 object-contain" src="youtube.png">
+            </div>
+            <span class="text-label-md font-label-md text-text-primary relative z-10">YouTube</span>
+        </a>
+
+        <!-- Affiliate Link / Merch Store (Span 1) -->
+        <a href="affiliate.html" class="col-span-1 glass-card rounded-3xl p-5 flex flex-col justify-center items-center gap-4 group transition-all duration-300 hover:-translate-y-1 hover:bg-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.2)] relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-[rgba(255,255,255,0.05)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="w-16 h-16 rounded-full bg-[rgba(0,255,128,0.1)] border border-[rgba(0,255,128,0.2)] flex items-center justify-center group-hover:scale-110 group-hover:bg-[rgba(0,255,128,0.2)] transition-all duration-300 shadow-[0_4px_15px_rgba(0,255,128,0.2)] relative z-10">
+                <span class="material-symbols-outlined text-[32px] text-primary-container">shopping_bag</span>
+            </div>
+            <span class="text-label-md font-label-md text-text-primary text-center relative z-10">Produk Rekomendasi</span>
+        </a>
+
+        <!-- Social: Threads -->
+        <a href="https://www.threads.net/@getdistribe" target="_blank" rel="noopener" class="col-span-1 glass-card rounded-3xl p-5 flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:-translate-y-1 hover:bg-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.2)] h-48 group relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-[rgba(255,255,255,0.05)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="w-16 h-16 rounded-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] flex items-center justify-center group-hover:scale-110 group-hover:bg-[rgba(255,255,255,0.1)] transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.2)] relative z-10">
+                <img alt="Threads" class="w-9 h-9 object-contain" src="threads.png">
+            </div>
+            <span class="text-label-md font-label-md text-text-primary relative z-10">Threads</span>
+        </a>
+
+        <!-- Website Link (Span 1) -->
+        <a href="https://getdistribe.com" target="_blank" rel="noopener" class="col-span-1 glass-card rounded-3xl p-5 flex flex-col justify-center items-center gap-4 group transition-all duration-300 hover:-translate-y-1 hover:bg-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.2)] relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-[rgba(255,255,255,0.05)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="w-16 h-16 rounded-full bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] flex items-center justify-center group-hover:scale-110 group-hover:bg-[rgba(255,255,255,0.1)] transition-all duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.2)] relative z-10">
+                <span class="material-symbols-outlined text-[32px] text-secondary-container">language</span>
+            </div>
+            <span class="text-label-md font-label-md text-text-primary text-center relative z-10">Website</span>
+        </a>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-stack-lg px-margin-mobile flex flex-col items-center gap-stack-sm mt-12 bg-transparent relative z-10">
+        <div class="flex gap-4 mb-4">
+            <a class="text-text-secondary hover:text-secondary transition-colors text-label-md font-label-md" href="https://www.getdistribe.com/p/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>
+            <span class="text-text-secondary">|</span>
+            <a class="text-text-secondary hover:text-secondary transition-colors text-label-md font-label-md" href="https://www.getdistribe.com/p/terms-of-service.html" target="_blank" rel="noopener">Terms of Service</a>
+        </div>
+        <p class="text-body-md font-body-md text-text-secondary">&copy; 2026 getDistribe. All rights reserved.</p>
+    </footer>
+
+    <!-- BottomNavBar (Mobile Only) -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex items-center px-4 py-2 bg-[rgba(26,26,26,0.6)] backdrop-blur-xl border-t border-[rgba(255,255,255,0.1)] shadow-[0_-4px_30px_rgba(0,0,0,0.3)] rounded-t-2xl pb-8 pt-4 justify-center">
+        <a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full p-3 scale-90 transition-transform shadow-[0_0_15px_rgba(255,71,156,0.4)]" href="https://getdistribe.com">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+        </a>
+    </nav>
+</body>
 </html>
