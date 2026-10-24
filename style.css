@@ -1,11 +1,11 @@
 /* CSS Reset & Base */
 :root {
-    --bg-color: #050002;
+    --bg-color: #0A0A0A;
     --text-primary: #ffffff;
-    --text-secondary: #e0e0e0;
-    --accent-pink: #ff107a;
-    --accent-glow: rgba(255, 16, 122, 0.6);
-    --border-pink: #d8006b;
+    --text-secondary: #9CA3AF;
+    --accent-pink: #FF1493;
+    --accent-glow: rgba(255, 20, 147, 0.5);
+    --border-pink: rgba(255, 20, 147, 0.4);
 }
 
 * {
