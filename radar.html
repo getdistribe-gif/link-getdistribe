@@ -107,32 +107,36 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            box-sizing: border-box;
         }
 
-        /* Top Navigation Bar */
+        /* Top Navigation Bar - Symmetrical & Balanced */
         .top-bar {
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 12px;
             padding-top: 24px;
             margin-bottom: 24px;
+            box-sizing: border-box;
         }
         .back-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background: var(--bg-card);
             border: 1px solid var(--border);
             color: var(--text-primary);
             text-decoration: none;
             font-size: 13px;
             font-weight: 600;
-            padding: 9px 18px;
+            padding: 8px 16px;
             border-radius: var(--radius-pill);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             transition: all var(--transition);
+            flex-shrink: 0;
         }
         .back-btn:hover {
             background: var(--bg-card-hover);
@@ -140,10 +144,47 @@
             color: var(--pink);
             transform: translateX(-3px);
         }
+        .brand-logo-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform var(--transition);
+            max-width: 140px;
+            flex-shrink: 1;
+        }
+        .brand-logo-link:hover {
+            transform: scale(1.04);
+        }
         .brand-logo-img {
-            height: 34px;
+            height: 32px;
+            max-width: 100%;
             width: auto;
             object-fit: contain;
+            display: block;
+        }
+        .share-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-pill);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all var(--transition);
+            flex-shrink: 0;
+        }
+        .share-btn:hover {
+            background: var(--pink-dim);
+            border-color: var(--pink);
+            color: var(--pink);
+            transform: scale(1.08);
+            box-shadow: 0 0 15px var(--pink-glow);
         }
 
         /* Playlist Header */
@@ -318,6 +359,32 @@
             font-size: 12px;
             color: var(--text-muted);
         }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(40px);
+            background: rgba(18, 18, 18, 0.95);
+            color: #FFFFFF;
+            border: 1px solid var(--green);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 15px var(--green-glow);
+            padding: 10px 22px;
+            border-radius: var(--radius-pill);
+            font-size: 13px;
+            font-weight: 600;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -330,15 +397,18 @@
     <!-- App Container -->
     <div class="app-container">
         
-        <!-- Top Bar -->
+        <!-- Top Bar: Symmetrical with Back, Centered Logo, and Share Button -->
         <header class="top-bar">
             <a href="index.html" class="back-btn" title="Kembali ke Link in Bio">
                 <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
                 <span>Kembali</span>
             </a>
-            <a href="https://www.getdistribe.com" title="getDistribe Home">
+            <a href="https://www.getdistribe.com" class="brand-logo-link" title="getDistribe Home">
                 <img src="logo.png" alt="getDistribe Logo" class="brand-logo-img">
             </a>
+            <button class="share-btn" onclick="handleShare()" aria-label="Share Playlist" title="Bagikan Playlist">
+                <span class="material-symbols-outlined" style="font-size: 18px;">share</span>
+            </button>
         </header>
 
         <!-- Playlist Header Info -->
@@ -386,5 +456,40 @@
         </footer>
 
     </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">Tautan berhasil disalin! 📋</div>
+
+    <script>
+        function handleShare() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'getDistribe Radar | Official Spotify Playlist',
+                    text: 'Dengarkan kurasi lagu terpanas pilihan getDistribe langsung di Spotify',
+                    url: window.location.href
+                }).catch(function() {});
+            } else {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(window.location.href).then(function() {
+                        showToast('Tautan berhasil disalin! 📋');
+                    }).catch(function() {
+                        showToast('Bagikan: ' + window.location.href);
+                    });
+                } else {
+                    showToast('Bagikan: ' + window.location.href);
+                }
+            }
+        }
+
+        function showToast(msg) {
+            var t = document.getElementById('toast');
+            if (!t) return;
+            t.textContent = msg;
+            t.classList.add('show');
+            setTimeout(function() {
+                t.classList.remove('show');
+            }, 2500);
+        }
+    </script>
 </body>
 </html>
